@@ -17,19 +17,26 @@
     <div class="container">
       <div class="Weather-wrapper">
         <div class="weather-App">
-          <h1>New York</h1>
-          <ul>
-            <li>friday 05:00</li>
-            <li>cloudy</li>
-          </ul>
+          <div class="overview">
+            <h1>New York</h1>
+            <ul>
+              <li>friday 05:00</li>
+              <li>cloudy</li>
+            </ul>
+          </div>
           <div class="row">
             <div class="col-md-6">
-              <img
-                class="wob"
-                alt="Mostly cloudy"
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              />
-              12℃/℉
+              <div class="d-flex weather-temperature">
+                <img
+                  class="float-left"
+                  alt="Mostly cloudy"
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                />
+                <div class="float-left">
+                  <strong>12</strong
+                  ><small class="units">℃/<a href="#">℉</a></small>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
               <ul>
@@ -40,7 +47,13 @@
             </div>
           </div>
         </div>
-        <small> open source-code, by happines Ezinne. </small>
+        <small
+          ><a
+            href="https://github.com/happynez-Ez/My-Weather-App"
+            target="blank"
+            >open source-code</a
+          >,by happines Ezinne.
+        </small>
       </div>
     </div>
     <script src="src/app.js"></script>
