@@ -1,6 +1,9 @@
-.weather-App {
+.Weather-rapper {
   max-width: 600px;
   margin: 30px;
+}
+
+.weather-App {
   padding: 20px;
   border: 1px solid #a9c6ed;
   border-radius: 5px;
@@ -12,8 +15,12 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
 }
+ul {
+  margin: 0;
+  padding: 0;
+}
 li {
   list-style: none;
   margin: 0;
-  padding:0 ;
+  padding: 0;
 }
