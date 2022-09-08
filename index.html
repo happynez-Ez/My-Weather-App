@@ -19,10 +19,10 @@
       <div class="Weather-wrapper">
         <div class="weather-App">
           <div class="overview">
-            <h1>New York</h1>
+            <h1 id="city"></h1>
             <ul>
-              <li>friday 05:00</li>
-              <li>cloudy</li>
+              <li>last updated: <span id="date"></span></li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -34,16 +34,15 @@
                   src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                 />
                 <div class="float-left">
-                  <strong>12</strong
+                  <strong id="temperature"></strong
                   ><small class="units">℃/<a href="#">℉</a></small>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <ul>
-                <li>precipitation: 0%</li>
-                <li>humidity: 12%</li>
-                <li>wind: 2km/h</li>
+                <li>humidity: <span id="humidity"></span></li>
+                <li>wind: <span id="wind"></span></li>
               </ul>
             </div>
           </div>
