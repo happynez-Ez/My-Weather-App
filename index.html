@@ -18,6 +18,24 @@
     <div class="container">
       <div class="Weather-wrapper">
         <div class="weather-App">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Type a City"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="search"
+                  class="btn btn-primary w-100"
+                />
+              </div>
+            </div>
+          </form>
           <div class="overview">
             <h1 id="city"></h1>
             <ul>
@@ -30,6 +48,7 @@
               <div class="d-flex weather-temperature">
                 <img
                   class="float-left"
+                  id="cloud"
                   alt="Mostly cloudy"
                   src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                 />
