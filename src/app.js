@@ -21,6 +21,7 @@ function formatDate(timestamp) {
 
   return `${day} ${hour}:${minutes}`;
 }
+
 function displayTemperature(response) {
   console.log(response.data.weather);
   let temperatureElement = document.querySelector("#temperature");
@@ -41,16 +42,28 @@ function displayTemperature(response) {
     ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
+
 function search(city) {
   let apiKey = "3b9a829cd2266e01c7f3584aff65693d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
+
 function handleSearch(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city-input");
   search(cityElement.value);
 }
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
 search("abuja");
 let form = document.querySelector("#search-form");
-form.addEventListener(submit, handleSearch);
+form.addEventListener("submit", handleSearch);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
