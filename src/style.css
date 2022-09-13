@@ -49,3 +49,7 @@ li:first-letter {
 a {
   text-decoration: none;
 }
+.weather-temperature .active {
+  color: rgb(7, 2, 40);
+  cursor: default;
+}

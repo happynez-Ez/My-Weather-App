@@ -26,6 +26,7 @@ function displayTemperature(response) {
   console.log(response.data.weather);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  celcuisElement = response.data.main.temp;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
@@ -57,13 +58,25 @@ function handleSearch(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
+  celcuisLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
+  let fahrenheitTemperature = (celcuisElement * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-search("abuja");
+function displayCelcuisTemperature(event) {
+  event.preventDefault();
+  celcuisLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celcuisElement);
+}
+let celcuisElement = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSearch);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+let celcuisLink = document.querySelector("#celcuis-link");
+celcuisLink.addEventListener("click", displayCelcuisTemperature);
+search("abuja");
