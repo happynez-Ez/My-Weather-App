@@ -54,3 +54,14 @@ a {
   color: rgb(7, 2, 40);
   cursor: default;
 }
+.weather-Forcast-Date {
+  margin-top: 20px;
+  font-size: 16px;
+  opacity: 0.5;
+}
+.weatther-Forcast-Temperature {
+  font-size: 13px;
+}
+.weather-Forcast-Temperature-min {
+  opacity: 0.5;
+}
