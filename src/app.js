@@ -23,13 +23,15 @@ function formatDate(timestamp) {
 }
 function displayForcast() {
   let forcastElement = document.querySelector("#weather-Forcast");
-  let forecastHTML = "";
-
-  forecastHTML = ` 
-		<div class="row">
-			<div class="col-2">
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+		<div class="col-2">
 				<div class="weather-Forcast-Date">
-				Thur
+				${day}
 			</div>
 			<img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
 			width="42"
@@ -39,8 +41,8 @@ function displayForcast() {
 
 </div>
 		</div>
-	</div>
-        </div>`;
+	`;
+  });
   forcastElement.innerHTML = forecastHTML;
 }
 function displayTemperature(response) {
