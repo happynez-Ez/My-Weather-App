@@ -21,7 +21,28 @@ function formatDate(timestamp) {
 
   return `${day} ${hour}:${minutes}`;
 }
+function displayForcast() {
+  let forcastElement = document.querySelector("#weather-Forcast");
+  let forecastHTML = "";
 
+  forecastHTML = ` 
+		<div class="row">
+			<div class="col-2">
+				<div class="weather-Forcast-Date">
+				Thur
+			</div>
+			<img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+			width="42"
+/>
+<div class="weather-Forcast-Temperature">
+	<span class="weather-Forcast-Temperature-max">12°</span> <span class="weather-Forcast-Temperature-min">8°</span>
+
+</div>
+		</div>
+	</div>
+        </div>`;
+  forcastElement.innerHTML = forecastHTML;
+}
 function displayTemperature(response) {
   console.log(response.data.weather);
   let temperatureElement = document.querySelector("#temperature");
@@ -80,3 +101,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celcuisLink = document.querySelector("#celcuis-link");
 celcuisLink.addEventListener("click", displayCelcuisTemperature);
 search("abuja");
+displayForcast();
