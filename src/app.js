@@ -21,32 +21,54 @@ function formatDate(timestamp) {
 
   return `${day} ${hour}:${minutes}`;
 }
-function displayForcast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+function displayForcast(response) {
+  let forecast = response.data.daily;
   let forcastElement = document.querySelector("#weather-Forcast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` 
 		<div class="col-2">
 				<div class="weather-Forcast-Date">
-				${day}
+				${formatDay(forecastDay.dt)}
 			</div>
-			<img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-			width="42"
+      
+			<img src="http://openweathermap.org/img/wn/${
+        forecastDay.weather[0].icon
+      }@2x.png"
 />
 <div class="weather-Forcast-Temperature">
-	<span class="weather-Forcast-Temperature-max">12°</span> <span class="weather-Forcast-Temperature-min">8°</span>
+	<span class="weather-Forcast-Temperature-max">${Math.round(
+    forecastDay.temp.max
+  )}°</span> <span class="weather-Forcast-Temperature-min">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
 
 </div>
 		</div>
 	`;
+    }
   });
   forcastElement.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinates) {
+  let apiKey = "3b9a829cd2266e01c7f3584aff65693d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lon=${coordinates.lon}&lat=${coordinates.lat}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForcast);
+}
+
 function displayTemperature(response) {
-  console.log(response.data.weather);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   celcuisElement = response.data.main.temp;
@@ -65,6 +87,7 @@ function displayTemperature(response) {
     "src",
     ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -103,4 +126,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celcuisLink = document.querySelector("#celcuis-link");
 celcuisLink.addEventListener("click", displayCelcuisTemperature);
 search("abuja");
-displayForcast();
