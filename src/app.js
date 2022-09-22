@@ -38,14 +38,11 @@ function displayForcast(response) {
         forecastHTML +
         ` 
 		<div class="col-2">
-				<div class="weather-Forcast-Date">
-				${formatDay(forecastDay.dt)}
-			</div>
-      
-			<img src="http://openweathermap.org/img/wn/${
-        forecastDay.weather[0].icon
-      }@2x.png"
-/>
+	    <div class="weather-Forcast-Date">${formatDay(forecastDay.dt)}
+		</div>
+    <img src="http://openweathermap.org/img/wn/${
+      forecastDay.weather[0].icon
+    }@2x.png"/>
 <div class="weather-Forcast-Temperature">
 	<span class="weather-Forcast-Temperature-max">${Math.round(
     forecastDay.temp.max
